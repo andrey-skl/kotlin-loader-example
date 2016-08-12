@@ -1,0 +1,31 @@
+{
+  "name": "kotlin-loader-example",
+  "version": "0.0.1",
+  "description": "An example pet project which uses webpack-kotlin-loader",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --history-api-fallback --progress --port 9312",
+    "build": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huston007/kotlin-loader-example.git"
+  },
+  "keywords": [
+    "kotlin"
+  ],
+  "author": "Andrey Skladchikov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/huston007/kotlin-loader-example/issues"
+  },
+  "homepage": "https://github.com/huston007/kotlin-loader-example#readme",
+  "devDependencies": {
+    "webpack": "2.1.0-beta.20",
+    "webpack-dev-server": "2.1.0-beta.0"
+  },
+  "dependencies": {
+    "webpack-kotlin-loader": "0.1.0"
+  }
+}
