@@ -1,3 +1,4 @@
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const path = require('path');
 
@@ -26,8 +27,10 @@ module.exports = {
     plugins: [
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
-            minChunks: Infinity,
-            filename: 'vendor.bundle.js'
+            filename: 'vendor.js'
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'index.html'
         })
     ]
 };
