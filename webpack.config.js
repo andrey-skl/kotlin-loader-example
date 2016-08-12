@@ -1,18 +1,17 @@
 const webpack = require('webpack');
 const path = require('path');
 
-const nodeEnv = process.env.NODE_ENV || 'development';
-const isProd = nodeEnv === 'production';
+var kotlinLoader = require.resolve('webpack-kotlin-loader/loader');
 
 module.exports = {
-    devtool: 'cheap-eval-source-map',
+    context: __dirname,
     entry: {
-        main: './src/index.js',
+        main: './src/index',
         vendor: ['kotlin']
     },
     output: {
-        path: path.join(__dirname, './dist'),
-        filename: 'bundle.js'
+        path: __dirname + '/dist',
+        filename: 'build.js'
     },
     resolve: {
         alias: {
@@ -21,11 +20,8 @@ module.exports = {
     },
     module: {
         loaders: [
-            {
-                test: /\.kt/,
-                loader: 'webpack-kotlin-loader',
-            }
-        ],
+            {test: /\.kt$/, loaders: [kotlinLoader]}
+        ]
     },
     plugins: [
         new webpack.optimize.CommonsChunkPlugin({
