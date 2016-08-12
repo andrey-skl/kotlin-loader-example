@@ -1,14 +1,13 @@
 package org.sample
 
-//import org.w3c.dom.Text
-//import kotlin.js.dom.html.document
-
+import kotlin.dom.*
+import kotlin.browser.*
 
 fun main() {
-    //document.getElementById("hello-world").setAttribute("value", "hello@kotlinlang.org")
+    document.getElementById("hello-world")?.setAttribute("value", "hello@kotlinlang.org")
     println("Hello, world!")
 
-    //val el = document.createElement("div")
-    //el.appendChild(document.createTextNode("Hello!"))
-    //document.body.appendChild(el)
+    val el = document.createElement("div")
+    el.appendChild(document.createTextNode("Hello!"))
+    document.body?.appendChild(el)
 }
