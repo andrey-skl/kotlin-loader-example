@@ -25,6 +25,16 @@ module.exports = {
             }
         ]
     },
+    devServer: {
+        stats: {
+            chunks: false,
+            hash: false,
+            timings: true,
+            assets: false,
+            children: false,
+            version: false
+        }
+    },
     plugins: [
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
