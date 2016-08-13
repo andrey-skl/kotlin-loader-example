@@ -4,7 +4,7 @@
   "description": "An example pet project which uses webpack-kotlin-loader",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --history-api-fallback --progress --port 9312",
+    "start": "webpack-dev-server --devtool cheap-eval-sourcemap --progress --port 9312",
     "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -27,6 +27,6 @@
     "webpack-dev-server": "1.14.1"
   },
   "dependencies": {
-    "webpack-kotlin-loader": "0.1.0"
+    "webpack-kotlin-loader": "0.1.1"
   }
 }

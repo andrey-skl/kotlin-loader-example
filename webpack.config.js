@@ -30,7 +30,7 @@ module.exports = {
             filename: 'vendor.js'
         }),
         new HtmlWebpackPlugin({
-            filename: 'index.html'
+            template: './src/index.html'
         })
     ]
 };
