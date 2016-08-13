@@ -2,8 +2,6 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const path = require('path');
 
-var kotlinLoader = require.resolve('webpack-kotlin-loader/loader');
-
 module.exports = {
     context: __dirname,
     entry: {
@@ -21,7 +19,10 @@ module.exports = {
     },
     module: {
         loaders: [
-            {test: /\.kt$/, loaders: [kotlinLoader]}
+            {
+                test: /\.kt$/,
+                loaders: ['webpack-kotlin-loader']
+            }
         ]
     },
     plugins: [
