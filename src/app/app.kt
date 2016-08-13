@@ -3,7 +3,7 @@ package org.sample
 import kotlin.dom.*
 import kotlin.browser.*
 
-fun main() {
+fun main(args: Array<String>) {
     document.getElementById("hello-world")?.setAttribute("value", "hello@kotlinlang.org")
     println("Hello, world!")
 
