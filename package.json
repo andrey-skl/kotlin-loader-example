@@ -27,6 +27,6 @@
     "webpack-dev-server": "1.14.1"
   },
   "dependencies": {
-    "webpack-kotlin-loader": "0.1.3"
+    "webpack-kotlin-loader": "0.1.4"
   }
 }

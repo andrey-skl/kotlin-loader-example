@@ -1,5 +1,9 @@
 package app
 
 fun getGreeting(): String {
-    return "Hello, world!"
+    val words = mutableListOf<String>()
+    words.add("Hello,")
+    words.add("world!")
+
+    return words.joinToString(separator = " ")
 }
