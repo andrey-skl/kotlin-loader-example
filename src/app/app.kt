@@ -1,7 +1,6 @@
 package org.sample
 
-import kotlin.dom.*
-import kotlin.browser.*
+import kotlin.browser.document
 
 fun main(args: Array<String>) {
     document.getElementById("hello-world")?.innerHTML = "Welcome to Kotlin Webpack example"
