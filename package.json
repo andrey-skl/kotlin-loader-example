@@ -4,7 +4,7 @@
   "description": "An example pet project which uses webpack-kotlin-loader",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --devtool sourcemap --progress --port 9312",
+    "start": "webpack-dev-server --devtool sourcemap --content-base ./dist --inline --progress --port 9312",
     "build": "rm -rf dist/ && webpack --devtool sourcemap",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
