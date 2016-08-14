@@ -21,7 +21,9 @@ module.exports = {
         loaders: [
             {
                 test: /\.kt$/,
-                loader: 'webpack-kotlin-loader?srcRoot=' + path.resolve(__dirname, './src')
+                loader: 'webpack-kotlin-loader?' + JSON.stringify({
+                    srcRoot: path.resolve(__dirname, './src')
+                })
             }
         ]
     },
