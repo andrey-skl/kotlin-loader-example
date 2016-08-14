@@ -14,7 +14,8 @@ module.exports = {
     },
     resolve: {
         alias: {
-            'kotlin': require.resolve('webpack-kotlin-loader/kotlin-runtime')
+            'kotlin': require.resolve('webpack-kotlin-loader/kotlin-runtime'),
+            'reakt_main': require.resolve('./lib/reakt_main.js')
         }
     },
     module: {
@@ -22,7 +23,8 @@ module.exports = {
             {
                 test: /\.kt$/,
                 loader: 'webpack-kotlin-loader?' + JSON.stringify({
-                    srcRoot: path.resolve(__dirname, './src')
+                    srcRoot: path.resolve(__dirname, './src'),
+                    libraryFiles: [path.resolve(__dirname, './lib/reakt.jar')]
                 })
             }
         ]
