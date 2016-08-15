@@ -28,5 +28,8 @@
   },
   "dependencies": {
     "webpack-kotlin-loader": "0.1.5"
-  }
+  },
+  "engines": {
+    "node": ">=5.5"
+  },
 }
