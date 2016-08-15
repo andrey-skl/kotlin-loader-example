@@ -27,6 +27,9 @@
     "webpack-dev-server": "1.14.1"
   },
   "dependencies": {
+    "react": "^15.3.0",
+    "react-dom": "^15.3.0",
+    "react-router": "^2.6.1",
     "webpack-kotlin-loader": "0.1.4"
   }
 }

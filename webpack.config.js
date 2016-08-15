@@ -6,7 +6,7 @@ module.exports = {
     context: __dirname,
     entry: {
         main: './src/index',
-        vendor: ['kotlin']
+        vendor: ['kotlin', 'react', 'react-dom', 'react-router', 'kotlinx.html.shared']
     },
     output: {
         path: __dirname + '/dist',
@@ -15,7 +15,7 @@ module.exports = {
     resolve: {
         alias: {
             'kotlin': require.resolve('webpack-kotlin-loader/kotlin-runtime'),
-            'reakt_main': require.resolve('./lib/reakt_main.js')
+            'kotlinx.html.shared': require.resolve('./lib/kotlinx.html/kotlinx.html.shared-0.5.11')
         }
     },
     module: {
@@ -23,8 +23,16 @@ module.exports = {
             {
                 test: /\.kt$/,
                 loader: 'webpack-kotlin-loader?' + JSON.stringify({
-                    srcRoot: path.resolve(__dirname, './src'),
-                    libraryFiles: [path.resolve(__dirname, './lib/reakt.jar')]
+                    srcRoots: [
+                        path.resolve(__dirname, './src'),
+                        path.resolve(__dirname, './lib/reakt')
+                    ],
+                    libraryFiles: [
+                        path.resolve(__dirname, './lib/kotlinx.html/kotlinx.html-0.5.11-SNAPSHOT-js.jar')
+                    ],
+                    compilerOptions: {
+                        noWarn: true
+                    }
                 })
             }
         ]

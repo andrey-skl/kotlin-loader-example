@@ -1,37 +1,30 @@
 package app
 
-import com.github.andrewoma.react.*
-import com.github.andrewoma.react.react
 import kotlin.browser.document
+import kotlinx.html.*
+import react.*
 
-data class TestItemProperties(val key: String)
-data class TestItemState(val isEditing: Boolean = false)
+class CompProps {
+    var text: String? = null
+}
 
-class TestComponent : ComponentSpec<TestItemProperties, TestItemState>() {
-    companion object {
-        val factory = react.createFactory(TestComponent())
-    }
+var TestComp = object : StatelessComponentSpec<CompProps> {
+    override fun componentName() = "TestComp"
 
-    fun onDoubleClick() {
-        println("Dbl click")
-    }
-
-    override fun Component.render() {
-
-        div({ className = "view" }) {
-            label({ onDoubleClick = { onDoubleClick() } }) {
-                text("Hello from reakt")
-            }
-
-            button({
-                value = "destroy"
-                onDoubleClick = { onDoubleClick() }
-            })
+    override fun ReactElementBuilder.render() {
+        button {
+            span { addClass("some-css-class") }
         }
     }
 }
 
+fun ReactElementBuilder.testComponent(builder: CompProps.() -> Unit): ReactElement {
+    val props = CompProps()
+    props.builder()
+
+    return TestComp.node(props)
+}
+
 fun renderReactPart() {
-    val container = document.getElementById("react-part")
-    react.render(TestComponent.factory(Ref(null)), container!!)
+    //reactDOM.render(TestComp(), document.getElementById("react-part"))
 }
