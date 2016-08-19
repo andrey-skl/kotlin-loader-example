@@ -13,16 +13,12 @@ var TestComp = object : StatelessComponentSpec<CompProps> {
 
     override fun ReactElementBuilder.render() {
         button {
-            span { addClass("some-css-class") }
+            span {
+                addClass("some-css-class")
+                +"Hello World"
+            }
         }
     }
-}
-
-fun ReactElementBuilder.testComponent(builder: CompProps.() -> Unit): ReactElement {
-    val props = CompProps()
-    props.builder()
-
-    return TestComp.node(props)
 }
 
 fun renderReactPart() {
