@@ -22,7 +22,7 @@ fun <P, S> ReactComponentSpec<P, S>.createClass(): ReactClass<P, S> {
             return reb.finalize()
         }
 
-        klass =  js("React.createClass(spec)")
+        klass =  js("require('react').createClass(spec)")
     }
 
     return klass

@@ -26,5 +26,7 @@ fun ReactElementBuilder.testComponent(builder: CompProps.() -> Unit): ReactEleme
 }
 
 fun renderReactPart() {
-    //reactDOM.render(TestComp(), document.getElementById("react-part"))
+    val React: React = runtime.require("react")
+
+    reactDOM.render(React.createElement(TestComp.createClass(), {}), document.getElementById("react-part"))
 }

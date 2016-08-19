@@ -112,6 +112,7 @@ class ReactElementBuilder(outerContext: ReactElementBuilder? = null) : TagConsum
         if (path.isEmpty() || currentNode().component.toLowerCase() != tag.tagName.toLowerCase())
             throw IllegalStateException("We haven't entered tag ${tag.tagName} but trying to leave")
         val node = path.removeAt(path.lastIndex)
+        val React: React = runtime.require("react")
         val element = React.createElement(node.component, node.props, *node.children)
         if (path.isNotEmpty())
             appendChild(element)
