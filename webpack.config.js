@@ -22,7 +22,8 @@ module.exports = {
         loaders: [
             {
                 test: /\.kt$/,
-                loader: 'webpack-kotlin-loader?' + JSON.stringify({
+                loader: 'webpack-kotlin-loader',
+                query: {
                     srcRoots: [
                         path.resolve(__dirname, './src'),
                         path.resolve(__dirname, './lib/reakt')
@@ -33,7 +34,7 @@ module.exports = {
                     compilerOptions: {
                         noWarn: true
                     }
-                })
+                }
             }
         ]
     },
