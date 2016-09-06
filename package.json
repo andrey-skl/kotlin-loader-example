@@ -27,6 +27,7 @@
     "webpack-dev-server": "2.1.0-beta.0"
   },
   "dependencies": {
+    "kotlin": "1.1.0-dev-2591",
     "react": "^15.3.0",
     "react-dom": "^15.3.0",
     "react-router": "^2.6.1",

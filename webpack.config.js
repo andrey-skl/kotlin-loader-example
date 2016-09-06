@@ -14,7 +14,6 @@ module.exports = {
     },
     resolve: {
         alias: {
-            'kotlin': require.resolve('webpack-kotlin-loader/kotlin-runtime'),
             'kotlinx.html.shared': require.resolve('./lib/kotlinx.html/kotlinx.html.shared-0.5.11')
         }
     },
