@@ -1,5 +1,5 @@
 # kotlin-loader-example
-An example pet project which uses webpack-kotlin-loader
+An example pet project which uses [webpack-kotlin-loader](https://github.com/huston007/kotlin-loader)
 
 Requirements:
 * Unix-based OS
