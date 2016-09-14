@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --devtool sourcemap --content-base ./dist --inline --progress --port 9312",
+    "install-maven-deps": "node ./install-maven-deps.js",
     "build": "rm -rf dist/ && webpack --devtool sourcemap",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -21,8 +22,25 @@
     "url": "https://github.com/huston007/kotlin-loader-example/issues"
   },
   "homepage": "https://github.com/huston007/kotlin-loader-example#readme",
+  "java": {
+    "repositories": [
+      {
+        "id": "bintray-kotlin-kotlin-dev",
+        "name": "bintray",
+        "url": "http://dl.bintray.com/kotlin/kotlin-dev/"
+      }
+    ],
+    "dependencies": [
+      {
+        "groupId": "org.jetbrains.kotlinx",
+        "artifactId": "kotlinx.html",
+        "version": "latest-1.1.0-dev-2664-8"
+      }
+    ]
+  },
   "devDependencies": {
     "html-webpack-plugin": "2.22.0",
+    "node-java-maven": "0.0.12",
     "webpack": "2.1.0-beta.21",
     "webpack-dev-server": "2.1.0-beta.0"
   },
