@@ -4,8 +4,8 @@
   "description": "An example pet project which uses webpack-kotlin-loader",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --devtool sourcemap --content-base ./dist --inline --progress --port 9312",
-    "build": "rm -rf dist/ && webpack --devtool sourcemap",
+    "start": "webpack-dev-server --devtool sourcemap --content-base ./dist --inline --progress --bail --port 9312",
+    "build": "rm -rf dist/ && webpack --bail --devtool sourcemap",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -23,15 +23,15 @@
   "homepage": "https://github.com/huston007/kotlin-loader-example#readme",
   "devDependencies": {
     "html-webpack-plugin": "2.22.0",
-    "webpack": "2.1.0-beta.21",
-    "webpack-dev-server": "2.1.0-beta.0"
+    "webpack": "2.2.0",
+    "webpack-dev-server": "2.2.0"
   },
   "dependencies": {
-    "kotlin": "1.1.0-dev-2591",
+    "kotlin": "1.1.0",
     "react": "^15.3.0",
     "react-dom": "^15.3.0",
     "react-router": "^2.6.1",
-    "webpack-kotlin-loader": "0.1.5"
+    "webpack-kotlin-loader": "0.3.1"
   },
   "engines": {
     "node": ">=5.5"
