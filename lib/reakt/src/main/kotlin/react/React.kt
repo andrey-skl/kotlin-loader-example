@@ -4,17 +4,20 @@ import org.w3c.dom.*
 import runtime.toPlainObject
 import kotlin.js.native
 
-@native
+external
 object React {
     fun createElement(component: dynamic, prop: dynamic, vararg children: dynamic): ReactElement = noImpl
 }
 
+fun ReactComponentSpec<*,*>.componentName() = this::class.js.name
+
 @Suppress("UNUSED_PARAMETER", "UNUSED_VARIABLE")
-fun <P, S> ReactComponentSpec<P, S>.createClass(): ReactClass<P, S> {
+fun <P, S> ReactComponentSpec<P, S>.createClass(mixinFactory: ReactComponentMixinFactory? = null): ReactClass<P, S> {
     var klass = this.asDynamic().klass
     if (klass == null) {
-        val spec = toPlainObject(asDynamic().__proto__)
+        val spec = toPlainObject(this)
         spec.displayName = componentName()
+
         spec.renderComponent = spec.render
         spec.render = fun dynamic.(): ReactElement {
             val reb = ReactElementBuilder()
@@ -22,13 +25,26 @@ fun <P, S> ReactComponentSpec<P, S>.createClass(): ReactClass<P, S> {
             return reb.finalize()
         }
 
-        klass =  js("require('react').createClass(spec)")
+        if (spec.getInitialState !== undefined) {
+            spec._originalInitialState = spec.getInitialState
+            spec.getInitialState = fun dynamic.(): Unit {
+                val st = _originalInitialState()
+                return js("({value: st})")
+            }
+        }
+
+        mixinFactory?.createMixins(this)?.let {
+            spec.mixins = it
+        }
+
+        klass =  js("React.createClass(spec)")
+        this.asDynamic().klass = klass
     }
 
     return klass
 }
 
-@native
+external
 object ReactDOM {
     fun render(element: dynamic, container: Element?): dynamic = noImpl
     fun<TProps, TState> findDOMNode(component: ReactComponentSpec<TProps, TState>): Element

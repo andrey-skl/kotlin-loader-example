@@ -3,9 +3,7 @@ package react
 import kotlin.browser.document
 
 class RenderHtmlComponentProps(val builder: ReactElementBuilder.()->Unit)
-val RenderHtmlComponent = object: StatelessComponentSpec<RenderHtmlComponentProps> {
-    override fun componentName() = "ReactElementBuilderComponent"
-
+object RenderHtmlComponent : StatelessComponentSpec<RenderHtmlComponentProps> {
     override fun ReactElementBuilder.render() {
         return with(props) {builder()}
     }

@@ -4,18 +4,41 @@ import org.w3c.dom.*
 import kotlin.js.native
 
 class NoProps
-@native interface ProplessComponentSpec : StatelessComponentSpec<NoProps>
-@native interface StatelessComponentSpec<TProps>: ReactComponentSpec<TProps, Unit>
+interface ProplessComponentSpec : StatelessComponentSpec<NoProps>
+interface StatelessComponentSpec<TProps>: ReactComponentSpec<TProps, Unit>
 
-@native
-interface ReactComponentSpec<TProps, TState> {
-    fun componentName(): String
 
+val <TState> ReactComponentSpec<*, TState>.state: TState get() {
+    return this.asDynamic().state.value
+}
+
+fun <TState> ReactComponentSpec<*, TState>.setState(newState: TState) {
+    this.asDynamic().setState(runtime.js {
+        value = newState
+    })
+}
+
+/**
+ * Merges nextState with the current state.
+ * This is the primary method you use to trigger UI updates from event handlers and server request callbacks.
+ * In addition, you can supply an optional callback function that is executed once setState is completed.
+ *
+ * @param nextState the object that will be merged with the component's state
+ * @param callback an optional callback function that is executed once setState is completed.
+ */
+fun <TState> ReactComponentSpec<*, TState>.setState(nextState: TState, callback: () -> Unit) {
+    this.asDynamic().setState(runtime.js {
+        value = nextState
+    }, callback)
+}
+
+interface ReactComponentSpec<TProps, TState>: ReactComponentSpecBase<TProps, TState> {
+    @JsName("render")
     fun ReactElementBuilder.render()
+}
 
+external interface ReactComponentSpecBase<TProps, TState> {
     val props: TProps get()  = noImpl
-    var state: TState get()  = noImpl
-                      set(v) = noImpl
 
     /**
      * If this component has been mounted into the DOM, this returns the corresponding native browser DOM element.
@@ -48,15 +71,6 @@ interface ReactComponentSpec<TProps, TState> {
      */
     fun <C : ReactComponentSpec<TProps, Any>> transferPropsTo(target: C): C = noImpl
 
-    /**
-     * Merges nextState with the current state.
-     * This is the primary method you use to trigger UI updates from event handlers and server request callbacks.
-     * In addition, you can supply an optional callback function that is executed once setState is completed.
-     *
-     * @param nextState the object that will be merged with the component's state
-     * @param callback an optional callback function that is executed once setState is completed.
-     */
-    fun setState(nextState: TState, callback: () -> Unit = {}): Unit = noImpl
 
     /**
      * Like setState() but deletes any pre-existing state keys that are not in nextState.

@@ -1,5 +1,5 @@
 package react
 
-@native interface ReactElement
+external interface ReactElement
 
-@native interface ReactClass<P, S>
+external interface ReactClass<P, S>
