@@ -25,11 +25,11 @@ module.exports = {
                 options: {
                     srcRoots: [
                         path.resolve(__dirname, './src'),
-                        path.resolve(__dirname, './lib/reakt')
+                        // path.resolve(__dirname, './lib/reakt')
                     ],
-                    libraries: [
-                        path.resolve(__dirname, './lib/kotlinx.html/kotlinx-html-js-0.6.2-SNAPSHOT.jar')
-                    ],
+                    // libraries: [
+                    //     path.resolve(__dirname, './lib/kotlinx.html/kotlinx-html-js-0.6.2-SNAPSHOT.jar')
+                    // ],
                     compilerOptions: {
                         noWarn: true
                     }
